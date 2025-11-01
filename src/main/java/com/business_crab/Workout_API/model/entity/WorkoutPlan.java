@@ -35,7 +35,7 @@ public class WorkoutPlan {
     @Column(name="created_at" , nullable=false)
     private Instant createdAt = Instant.now();
     @Column(name="updated_at" , nullable=true)
-    private Instant updateAt;
+    private Instant updatedAt;
     @OneToMany(mappedBy="workout_plan" , cascade=CascadeType.ALL , orphanRemoval=true)
     private List<WorkoutExercise> workoutExercises;
     @OneToMany(mappedBy="workout_schedule" , cascade=CascadeType.ALL , orphanRemoval=true)

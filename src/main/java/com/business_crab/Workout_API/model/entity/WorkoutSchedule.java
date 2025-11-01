@@ -28,7 +28,7 @@ public class WorkoutSchedule {
     @JoinColumn(name="workout_plan_id" , nullable=false)
     private WorkoutPlan workoutPlan;
     @Column(name="schedule_date" , nullable=false)
-    private Instant scheduleDate;
+    private Instant scheduledDate;
     @Column(nullable=false)
     private Boolean isCompleted = false;
     @Column(nullable=true)
