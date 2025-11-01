@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,6 +62,36 @@ public class ExerciseController {
         exercise.setMuscleGroup(exerciseDTO.getMuscleGroup());
         Exercise savedExercise = exerciseService.createExercise(exercise);
         return ResponseEntity.ok(mapToDTO(savedExercise));
+    }
+
+    @Operation(summary="Updates an exercise" , description="Updates an exercise")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode="200" , description="Exercise updated") ,
+        @ApiResponse(responseCode="400" , description="Invalid exercise data") ,
+        @ApiResponse(responseCode="403" , description="Forbidden 403 - Not Owner or Admin")
+    })
+    @PutMapping("/{id}")
+    public ResponseEntity<ExerciseDTO> updateExercise(final @PathVariable Long id , final @RequestBody ExerciseDTO exerciseDTO) {
+        Exercise exercise = new Exercise();
+        exercise.setId(exerciseDTO.getId());
+        exercise.setName(exerciseDTO.getName());
+        exercise.setDescription(exerciseDTO.getDescription());
+        exercise.setCategory(exerciseDTO.getCategory());
+        exercise.setMuscleGroup(exerciseDTO.getMuscleGroup());
+        Exercise updatedExercise = exerciseService.updateExercise(id , exercise);
+        return ResponseEntity.ok(mapToDTO(updatedExercise));
+    }
+
+    @Operation(summary="Delete an exercise" , description="Deletes an exercise by ID")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode="200" , description="Exercise deleted") ,
+        @ApiResponse(responseCode="403" , description="Forbidden 403 - Not Owner or Admin") ,
+        @ApiResponse(responseCode="404" , description="Exercise not found")
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteExercise(final @PathVariable Long id) {
+        exerciseService.deleteExercise(id);
+        return ResponseEntity.ok().build();
     }
 
     private ExerciseDTO mapToDTO(Exercise exercise) {

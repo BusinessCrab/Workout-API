@@ -1,7 +1,5 @@
 package com.business_crab.Workout_API.model.dto;
 
-import java.util.Locale;
-
 import com.business_crab.Workout_API.model.entity.Category;
 import com.business_crab.Workout_API.model.entity.MuscleGroup;
 

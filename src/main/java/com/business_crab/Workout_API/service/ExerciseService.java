@@ -15,7 +15,7 @@ public class ExerciseService {
         this.exerciseRepository = exerciseRepository;
     }
 
-    public Exercise creatExercise(final Exercise exercise) {
+    public Exercise createExercise(final Exercise exercise) {
         return exerciseRepository.save(exercise);
     }
 
@@ -28,7 +28,7 @@ public class ExerciseService {
         return exerciseRepository.findAll();
     }
 
-    public Exercise updatExercise(final Long id , final Exercise exerciseDetails) {
+    public Exercise updateExercise(final Long id , final Exercise exerciseDetails) {
         Exercise exercise = getExerciseById(id);
         exercise.setName(exerciseDetails.getName());
         exercise.setDescription(exerciseDetails.getDescription());
