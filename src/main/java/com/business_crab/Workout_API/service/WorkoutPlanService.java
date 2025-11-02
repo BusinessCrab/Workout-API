@@ -57,7 +57,7 @@ public class WorkoutPlanService {
     public WorkoutPlan updateWorkoutPlan(final Long id , final WorkoutPlan workoutPlanDetails) {
         WorkoutPlan workoutPlan = getWorkoutPlanById(id);
         workoutPlan.setName(workoutPlanDetails.getName());
-        workoutPlan.setUpdateAt(workoutPlanDetails.getUpdateAt());
+        workoutPlan.setUpdatedAt(workoutPlanDetails.getUpdatedAt());
         return workoutPlanRepository.save(workoutPlan);
     }
 

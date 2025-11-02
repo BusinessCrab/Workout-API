@@ -38,7 +38,7 @@ public class WorkoutScheduleService {
                                                  final WorkoutSchedule workoutScheduleDetails)
     {
         WorkoutSchedule workoutSchedule = getWorkoutScheduleById(id);
-        workoutSchedule.setScheduleDate(workoutScheduleDetails.getScheduleDate());
+        workoutSchedule.setScheduledDate(workoutScheduleDetails.getScheduledDate());
         workoutSchedule.setIsCompleted(workoutScheduleDetails.getIsCompleted());
         workoutSchedule.setComments(workoutScheduleDetails.getComments());
         return workoutScheduleRepository.save(workoutSchedule);
