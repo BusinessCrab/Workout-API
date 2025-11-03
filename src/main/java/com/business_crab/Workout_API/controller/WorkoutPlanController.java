@@ -187,7 +187,7 @@ public class WorkoutPlanController {
         dto.setId(workoutSchedule.getId());
         dto.setWorkoutPlanId(workoutSchedule.getWorkoutPlan().getId());
         dto.setScheduledDate(workoutSchedule.getScheduledDate());
-        dto.setCompleted(workoutSchedule.getIsCompleted());
+        dto.setIsCompleted(workoutSchedule.getIsCompleted());
         dto.setComments(workoutSchedule.getComments());
         return dto;
     }

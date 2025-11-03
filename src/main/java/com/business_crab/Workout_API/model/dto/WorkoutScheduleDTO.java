@@ -16,6 +16,6 @@ public class WorkoutScheduleDTO {
     @NotBlank
     private Instant scheduledDate;
     @NotNull
-    private Boolean completed;
+    private Boolean isCompleted;
     private String comments;
 }
