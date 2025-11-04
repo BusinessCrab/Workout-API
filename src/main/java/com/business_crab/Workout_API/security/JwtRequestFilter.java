@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import io.jsonwebtoken.io.IOException;
+import io.micrometer.common.lang.NonNull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,9 +26,9 @@ public class JwtRequestFilter extends OncePerRequestFilter{
     }
 
     @Override
-    protected void doFilterInternal(final HttpServletRequest request ,
-                                    final HttpServletResponse response , 
-                                    final FilterChain chain)
+    protected void doFilterInternal(final @NonNull HttpServletRequest request ,
+                                    final @NonNull HttpServletResponse response , 
+                                    final @NonNull FilterChain chain)
     throws ServletException , IOException {
         final String authorizationHeader = request.getHeader("Authorization");
         String username = null , jwt = null;
